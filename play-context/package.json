@@ -1,0 +1,66 @@
+{
+	"name": "play-context",
+	"displayName": "play-context",
+	"description": "Using context menus, set the queue or play single song",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "play-context.replaceAndPlay",
+				"title": "Volumio: Replace and Play"
+			},
+			{
+				"command": "play-context.playSong",
+				"title": "Volumio: Play Song"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "resourceFilename =~ /releaseRadar/",
+					"command": "play-context.replaceAndPlay",
+					"group": "Volumio"
+				},
+				{
+					"when": "resourceFilename =~ /releaseRadar/",
+					"command": "play-context.playSong",
+					"group": "Volumio"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.53.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"axios": "^0.21.1"
+	}
+}
