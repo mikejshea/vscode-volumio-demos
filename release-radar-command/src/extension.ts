@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 function getPlaylist(editor: any) {
 	getReleaseRadar().then((res: any) => {
 		editor.edit((edit: { insert: (arg0: vscode.Position, arg1: any) => void; }) => {
-			edit.insert(new vscode.Position(0,0), JSON.stringify(res, null, 2));
+			edit.insert(new vscode.Position(0,0), JSON.stringify({index: 0, list: res}, null, 2));
 		});
 		vscode.window.showInformationMessage(`Updated File`);
 	}).catch((err: any) =>
